@@ -71,6 +71,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "hprose/hprose": {
+        "version": "v2.0.35"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
