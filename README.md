@@ -1,2 +1,8 @@
-# sf4.1
-symfony4.1 web例子
+
+### 初始化新建项目
+
+```
+
+composer create-project symfony/website-skeleton project_name
+
+```
