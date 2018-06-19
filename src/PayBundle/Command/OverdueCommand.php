@@ -8,7 +8,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * 逾期还款发送短信
  * Class OverdueCommand
- * @package AdminBundle\Command
  */
 class OverdueCommand extends ContainerAwareCommand{
 
