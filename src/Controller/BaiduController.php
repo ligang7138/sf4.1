@@ -19,4 +19,8 @@ class BaiduController extends Controller
 	public function testAction(){
 		return $this->render("baidu/case.html.twig",['name' => '百度地图使用案例']);
 	}
+
+	public function testService(){
+		echo '可以被作为service使用';die;
+	}
 }
