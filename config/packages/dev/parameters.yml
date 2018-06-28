@@ -1,0 +1,21 @@
+#该param文件放在packages目录里dev，prod，test任何一个目录下，项目都会自动加载进去。根据.env文件里APP_ENV的值去加载dev，prod或是test
+parameters:
+    #shoping配置
+    database_host: 44.94.15.20
+    database_port: 3306
+    database_name: fe
+    database_user: tes
+    database_password: 123456
+
+    #fenqi配置
+    database_host2: 44.94.15.200
+    database_port2: 3306
+    database_name2: ys_fe
+    database_user2: ys_tes
+    database_password2: 123456
+
+    #应用密钥
+    secret: 4019e786cf0d98e3a536f04f9319b7d4dad42840
+    #redis配置
+    redis_master_host: redis://127.0.0.1
+    redis_cluster_host: redis://127.0.0.1/1
