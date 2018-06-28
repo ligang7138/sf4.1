@@ -21,7 +21,7 @@ class TestController extends Controller
 	}
 
 	/**
-	 * 测试把service当作服务使用
+	 * 一次使用资源导入多项服务的情况
 	 * @Route("/service")
 	 * @param MessageGenerator $messageGenerator
 	 */
@@ -29,6 +29,16 @@ class TestController extends Controller
 		$message = $messageGenerator->getHappyMessage();
 		echo $message;die;
 		return $this->addFlash('success',$message);
+	}
+
+	/**
+	 * 单独在services.yaml加服务的情况，使用$this->container->get(MessageGenerator::class)获取服务
+	 * @Route("/service1")
+	 */
+	public function testService1(){
+		$messageService = $this->container->get(MessageGenerator::class);
+		$message = $messageService->getHappyMessage();
+		echo $message;die;
 	}
 
 	/**
