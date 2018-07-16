@@ -36,7 +36,8 @@ class TestController extends Controller
 	 * @Route("/service1")
 	 */
 	public function testService1(){
-		$messageService = $this->container->get(MessageGenerator::class);
+//		$messageService = $this->container->get(MessageGenerator::class);
+		$messageService = $this->container->get('message_generator');
 		$message = $messageService->getHappyMessage();
 		echo $message;die;
 	}

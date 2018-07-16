@@ -22,9 +22,9 @@
         </div>
 
         <div id="allmap" style="height:700px;width:800px;"></div>
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=0F0c3121d1bd0beeef20a07c561d92c1"></script>
+        {#<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=0F0c3121d1bd0beeef20a07c561d92c1"></script>#}
         {#以下是一个无效的秘钥，对比使用#}
-        {#<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=HkNTMR9M1Ajc2gZgQTeiQbSraf8hyaG"></script>#}
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=HkNTMR9M1Ajc2gZgQTeiQbSraf8hyaGt"></script>
 
         <script type="text/javascript">
 
@@ -107,6 +107,46 @@
                     map.addOverlay(marker);              // 将标注添加到地图中
                     map.panTo(new_point);
                 }
+            }
+            //自定义地图显示大小
+            //创建和初始化地图函数：
+            function initMap(){
+                createMap();//创建地图
+                setMapEvent();//设置地图事件
+                addMapControl();//向地图添加控件
+                addMapOverlay();//向地图添加覆盖物
+            }
+
+            function addClickHandler(target,window){
+                target.addEventListener("click",function(){
+                    target.openInfoWindow(window);
+                });
+            }
+            function addMapOverlay(){
+            }
+            //向地图添加控件
+            function addMapControl(){
+                var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+                scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+                map.addControl(scaleControl);
+                var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+                map.addControl(navControl);
+                var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+                map.addControl(overviewControl);
+            }
+            // var map;
+
+            function createMap(){
+                map = new BMap.Map("map");
+                // $('#partner_lng').val(point.lng);
+                // $('#partner_lat').val(point.lat);
+                map.centerAndZoom(new BMap.Point($('#partner_lng').val(),$('#partner_lat').val()),15);
+            }
+            function setMapEvent(){
+                map.enableScrollWheelZoom();
+                map.enableKeyboard();
+                map.enableDragging();
+                map.enableDoubleClickZoom()
             }
         </script>
     </body>
