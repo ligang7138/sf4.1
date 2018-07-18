@@ -19,7 +19,8 @@ services:
     # 一次使用资源导入多项服务
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Service,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+#        exclude: '../src/{Entity,Service,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -34,12 +35,10 @@ services:
 #        public: true
 
     message_generator:
+        public: true
         class: App\Service\MessageGenerator
 #        arguments: []
     redis_service:
         public: true
         class: App\Service\RedisService
         arguments: ["@snc_redis.default"]
-
-    redis:
-        resource:
