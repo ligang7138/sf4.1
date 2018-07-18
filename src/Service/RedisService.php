@@ -4,7 +4,7 @@ namespace App\Service;
 class RedisService {
     protected $redis;
 
-    function __construct($redis,$params)
+    function __construct($redis)
     {
 	    //$redis->auth('ys123456');
         $this->redis = $redis;
@@ -42,11 +42,8 @@ class RedisService {
         return $ret;
     }
 
-    /**
-     * @return redis对象
-     */
-    public function getRedis(){
-        return $this->redis;
-    }
+	public function __call($method, $arguments){
+		return call_user_func_array(array($this->redis, $method), $arguments);
+	}
 
 }

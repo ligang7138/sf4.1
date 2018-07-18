@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\RedisService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,10 +18,13 @@ class BaiduController extends Controller
 	 * @Route("/case")
 	 */
 	public function testAction(){
+		$redis = $this->container->get('redis');
+		echo '<pre />';
+		print_r($redis);die;
 		return $this->render("baidu/case.html.twig",['name' => '百度地图使用案例']);
 	}
 
 	public function testService(){
-		echo '可以被作为service使用';die;
+		return '可以被作为service使用';
 	}
 }

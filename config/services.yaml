@@ -36,6 +36,10 @@ services:
     message_generator:
         class: App\Service\MessageGenerator
 #        arguments: []
-#    redis_service:
-#        class: App\Service\RedisService
-#        arguments: ["@snc_redis.default"]
+    redis_service:
+        public: true
+        class: App\Service\RedisService
+        arguments: ["@snc_redis.default"]
+
+    redis:
+        resource:
